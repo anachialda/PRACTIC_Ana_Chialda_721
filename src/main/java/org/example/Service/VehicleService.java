@@ -1,9 +1,12 @@
 package org.example.Service;
 
 import org.example.Model.Vehicle;
+import org.example.Model.VehicleStatus;
+import org.example.Model.VehicleType;
 import org.example.Repository.VehicleRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VehicleService {
     private final VehicleRepository repo;
@@ -27,6 +30,15 @@ public class VehicleService {
 
     public void deleteVehicle(Integer id) {
         repo.deleteById(id);
+    }
+
+    public List<Vehicle> findByTypAndStatus(VehicleType type, VehicleStatus status) {
+        return getAllVehicles().stream()
+
+                .filter(t -> t.getType() == type)
+
+                .filter(t -> t.getStatus() == status)
+                .collect(Collectors.toList());
     }
 
 

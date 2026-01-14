@@ -3,6 +3,8 @@ package org.example;
 import org.example.Controller.FineController;
 import org.example.Controller.TrafficEventController;
 import org.example.Controller.VehicleController;
+import org.example.Model.VehicleStatus;
+import org.example.Model.VehicleType;
 import org.example.Repository.FineRepository;
 import org.example.Repository.TrafficEventRepository;
 import org.example.Repository.VehicleRepository;
@@ -37,5 +39,29 @@ public class Main {
 
         vehicleController.showAllVehicles();
 
+        System.out.println();
+
+        //2
+        System.out.print("Enter Vehicle Type: ");
+        if (scnanner.hasNextLine()) {
+            String typeInput = scnanner.nextLine();
+            System.out.print("Enter Vehicle Status: ");
+            if (scnanner.hasNextLine()) {
+                String statusInput = scnanner.nextLine();
+
+                try {
+                    vehicleController.showFilteredVehicles(
+                            VehicleType.valueOf(typeInput.toUpperCase()),
+                            VehicleStatus.valueOf(statusInput.toUpperCase())
+                    );
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid input for vehicle type or status.");
+                }
+            } else {
+                System.out.println("Invalid input for vehicle status.");
+            }
+        } else {
+            System.out.println("Invalid input for vehicle type.");
+        }
     }
 }

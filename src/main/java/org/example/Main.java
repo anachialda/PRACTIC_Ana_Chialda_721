@@ -29,7 +29,13 @@ public class Main {
 
         Scanner scnanner = new Scanner(System.in);
 
+        System.out.println("Vehicles loaded:" + vehicleService.getAllVehicles().size());
+        System.out.println("Events loaded:" + trafficEventService.getAllEvents().size());
+        System.out.println("Fines loaded:" + fineService.getAllFines().size());
 
+        System.out.println();
+
+        vehicleController.showAllVehicles();
 
     }
 }

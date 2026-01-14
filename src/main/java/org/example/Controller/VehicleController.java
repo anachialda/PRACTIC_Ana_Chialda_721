@@ -10,7 +10,7 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    public void showAllFines() {
+    public void showAllVehicles() {
         vehicleService.getAllVehicles().forEach(System.out::println);
     }
 

@@ -10,7 +10,7 @@ public class TrafficEventController {
         this.trafficEventService = trafficEventService;
     }
 
-    public void showAllFines() {
+    public void showAllEvents() {
         trafficEventService.getAllEvents().forEach(System.out::println);
     }
 }

@@ -35,6 +35,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "[" + id + "] " + licensePlate + " | " + type + " | " + status + ", city=" + ownerCity;
+        return "[" + id + "] " + licensePlate + " | " + type + " | " + status + " | city=" + ownerCity;
     }
 }

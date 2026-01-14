@@ -5,6 +5,9 @@ import org.example.Model.VehicleStatus;
 import org.example.Model.VehicleType;
 import org.example.Repository.VehicleRepository;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +53,15 @@ public class VehicleService {
                 .sorted(Comparator.comparing(Vehicle::getOwnerCity).reversed()
                         .thenComparingInt(Vehicle::getId).reversed())
                 .collect(Collectors.toList());
+    }
+
+    //save to file sortiert
+    public void saveSortedVehiclesToFile(String filename) throws IOException {
+        List<String> lines = getSortedVehicles().stream()
+                .map(Vehicle::toString)
+                .collect(Collectors.toList());
+
+        Files.write(Path.of(filename), lines);
     }
 
 

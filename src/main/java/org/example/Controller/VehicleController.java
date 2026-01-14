@@ -6,6 +6,7 @@ import org.example.Model.VehicleType;
 import org.example.Service.FineService;
 import org.example.Service.VehicleService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class VehicleController {
@@ -26,6 +27,15 @@ public class VehicleController {
 
     public void showSortedVehicles(){
         vehicleService.getSortedVehicles().forEach(System.out::println);
+    }
+
+    public void saveSortedToFile() {
+        try {
+            vehicleService.saveSortedVehiclesToFile("vehicles_sorted.txt");
+            System.out.println("Gespeichert");
+        } catch (IOException e) {
+            System.out.println("Fehler beim Speichern: " + e.getMessage());
+        }
     }
 
 }

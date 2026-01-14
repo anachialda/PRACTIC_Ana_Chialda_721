@@ -68,5 +68,9 @@ public class Main {
         System.out.println();
         System.out.println("    Vehicles sorted: ");
         vehicleController.showSortedVehicles();
+
+        //5
+        System.out.println();
+        vehicleController.saveSortedToFile();
     }
 }

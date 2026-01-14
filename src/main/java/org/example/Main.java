@@ -1,17 +1,35 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.example.Controller.FineController;
+import org.example.Controller.TrafficEventController;
+import org.example.Controller.VehicleController;
+import org.example.Repository.FineRepository;
+import org.example.Repository.TrafficEventRepository;
+import org.example.Repository.VehicleRepository;
+import org.example.Service.FineService;
+import org.example.Service.TrafficEventService;
+import org.example.Service.VehicleService;
+
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        FineRepository fineRepository = new FineRepository();
+        TrafficEventRepository trafficEventRepository = new TrafficEventRepository();
+        VehicleRepository vehicleRepository = new VehicleRepository();
+
+        FineService fineService = new FineService(fineRepository);
+        TrafficEventService trafficEventService = new TrafficEventService(trafficEventRepository);
+        VehicleService vehicleService = new VehicleService(vehicleRepository);
+
+        FineController fineController = new FineController(fineService);
+        TrafficEventController trafficEventController = new TrafficEventController(trafficEventService);
+        VehicleController vehicleController = new VehicleController(vehicleService);
+
+        Scanner scnanner = new Scanner(System.in);
+
+
+
     }
 }

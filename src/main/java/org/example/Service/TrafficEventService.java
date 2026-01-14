@@ -2,10 +2,17 @@ package org.example.Service;
 
 
 
+import org.example.Model.EventType;
 import org.example.Model.TrafficEvent;
 import org.example.Repository.TrafficEventRepository;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TrafficEventService {
     private final TrafficEventRepository repo;
@@ -45,5 +52,18 @@ public class TrafficEventService {
             default:
                 return s;
         }
+    }
+
+    public void generateReport(String filename) throws IOException {
+        Map<EventType, Long> counts = getAllEvents().stream()
+                .collect(Collectors.groupingBy(TrafficEvent::getType, Collectors.counting()));
+
+        List<String> lines = new ArrayList<>();
+
+        counts.forEach((type, count) -> {
+            lines.add(type + " -> " + count);
+        });
+
+        Files.write(Path.of(filename), lines);
     }
 }

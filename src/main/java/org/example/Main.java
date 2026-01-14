@@ -42,26 +42,31 @@ public class Main {
         System.out.println();
 
         //2
-        System.out.print("Enter Vehicle Type: ");
-        if (scnanner.hasNextLine()) {
-            String typeInput = scnanner.nextLine();
-            System.out.print("Enter Vehicle Status: ");
-            if (scnanner.hasNextLine()) {
-                String statusInput = scnanner.nextLine();
+//        System.out.print("Enter Vehicle Type: ");
+//        if (scnanner.hasNextLine()) {
+//            String typeInput = scnanner.nextLine();
+//            System.out.print("Enter Vehicle Status: ");
+//            if (scnanner.hasNextLine()) {
+//                String statusInput = scnanner.nextLine();
+//
+//                try {
+//                    vehicleController.showFilteredVehicles(
+//                            VehicleType.valueOf(typeInput.toUpperCase()),
+//                            VehicleStatus.valueOf(statusInput.toUpperCase())
+//                    );
+//                } catch (IllegalArgumentException e) {
+//                    System.out.println("Invalid input for vehicle type or status.");
+//                }
+//            } else {
+//                System.out.println("Invalid input for vehicle status.");
+//            }
+//        } else {
+//            System.out.println("Invalid input for vehicle type.");
+//        }
 
-                try {
-                    vehicleController.showFilteredVehicles(
-                            VehicleType.valueOf(typeInput.toUpperCase()),
-                            VehicleStatus.valueOf(statusInput.toUpperCase())
-                    );
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Invalid input for vehicle type or status.");
-                }
-            } else {
-                System.out.println("Invalid input for vehicle status.");
-            }
-        } else {
-            System.out.println("Invalid input for vehicle type.");
-        }
+        //3
+        System.out.println();
+        System.out.println("    Vehicles sorted: ");
+        vehicleController.showSortedVehicles();
     }
 }

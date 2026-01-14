@@ -24,4 +24,8 @@ public class VehicleController {
         filteredVehicles.forEach(System.out::println);
     }
 
+    public void showSortedVehicles(){
+        vehicleService.getSortedVehicles().forEach(System.out::println);
+    }
+
 }

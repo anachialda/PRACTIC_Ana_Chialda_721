@@ -1,6 +1,5 @@
 package org.example.Controller;
 
-import org.example.Service.FineService;
 import org.example.Service.TrafficEventService;
 
 public class TrafficEventController {
@@ -12,5 +11,16 @@ public class TrafficEventController {
 
     public void showAllEvents() {
         trafficEventService.getAllEvents().forEach(System.out::println);
+    }
+
+    public void showRiskScore() {
+        trafficEventService.getAllEvents().stream()
+                .limit(5)
+                .forEach(e -> {;
+                    int computed = trafficEventService.riskScore(e);
+                    System.out.println("Event " + e.getId() +
+                            " -> severity=" + e.getSeverity() +
+                            " -> riskScore=" + computed);
+                });
     }
 }

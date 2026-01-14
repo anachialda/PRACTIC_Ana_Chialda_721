@@ -30,4 +30,20 @@ public class TrafficEventService {
     public void deleteEvent(Integer id) {
         repo.deleteById(id);
     }
+
+    public int riskScore(TrafficEvent event) {
+        int s = event.getSeverity();
+        switch (event.getType()) {
+            case SPEEDING:
+                return s * 2;
+            case RED_LIGHT:
+                return s * 3;
+            case ACCIDENT:
+                return s * 5;
+            case PRIORITY_PASS:
+                return s * 1;
+            default:
+                return s;
+        }
+    }
 }

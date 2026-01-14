@@ -69,8 +69,12 @@ public class Main {
         System.out.println("    Vehicles sorted: ");
         vehicleController.showSortedVehicles();
 
-        //5
+        //4
         System.out.println();
         vehicleController.saveSortedToFile();
+
+        //5
+        System.out.println();
+        trafficEventController.showRiskScore();
     }
 }

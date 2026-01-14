@@ -32,4 +32,5 @@ public class TrafficEvent {
 
     public int getTimeSlot() { return timeSlot; }
     public void setTimeSlot(int timeSlot) { this.timeSlot = timeSlot; }
+
 }
